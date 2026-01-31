@@ -7,6 +7,8 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ManHinhTinhToan extends JFrame {
 
@@ -68,16 +70,32 @@ public class ManHinhTinhToan extends JFrame {
 		contentPane.add(txtB);
 		
 		JButton btnCong = new JButton("CỘNG");
+		btnCong.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//Code xu ly phep cong
+				HamXuLyCong();
+			}
+		});
 		btnCong.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		btnCong.setBounds(41, 223, 86, 24);
 		contentPane.add(btnCong);
 		
 		JButton btnTru = new JButton("TRỪ");
+		btnTru.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				HamXuLyTru();
+			}
+		});
 		btnTru.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		btnTru.setBounds(137, 223, 86, 24);
 		contentPane.add(btnTru);
 		
 		JButton btnNhan = new JButton("NHÂN");
+		btnNhan.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				HamXuLyNhan();
+			}
+		});
 		btnNhan.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		btnNhan.setBounds(246, 223, 86, 24);
 		contentPane.add(btnNhan);
@@ -93,10 +111,47 @@ public class ManHinhTinhToan extends JFrame {
 		contentPane.add(lblKtQuTnh);
 		
 		txtKetQua = new JTextField();
+		txtKetQua.setEditable(false);
 		txtKetQua.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		txtKetQua.setColumns(10);
 		txtKetQua.setBounds(194, 264, 240, 32);
 		contentPane.add(txtKetQua);
-
+	}
+	//Ket thuc ham tao
+	
+	//Cac ham tinh toan
+	void HamXuLyCong() {
+		String str_soA = txtA.getText();
+		String str_soB = txtB.getText();
+		//chuyen kieu du lieu
+		Double soA = Double.parseDouble(str_soA);
+		Double soB = Double.parseDouble(str_soB);
+		//Tinh tong
+		Double Tong = soA + soB;
+		//hien thi ket qua ra man hinh
+		txtKetQua.setText(String.valueOf(Tong));
+		
+	}
+	void HamXuLyTru() {
+		String str_soA = txtA.getText();
+		String str_soB = txtB.getText();
+		//chuyen kieu du lieu
+		Double soA = Double.parseDouble(str_soA);
+		Double soB = Double.parseDouble(str_soB);
+		//Tinh tong
+		Double Hieu = soA - soB;
+		//hien thi ket qua ra man hinh
+		txtKetQua.setText(String.valueOf(Hieu));
+	}
+	void HamXuLyNhan() {
+		String str_soA = txtA.getText();
+		String str_soB = txtB.getText();
+		//chuyen kieu du lieu
+		Double soA = Double.parseDouble(str_soA);
+		Double soB = Double.parseDouble(str_soB);
+		//Tinh tong
+		Double Tich = soA * soB;
+		//hien thi ket qua ra man hinh
+		txtKetQua.setText(String.valueOf(Tich));
 	}
 }
